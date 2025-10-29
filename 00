@@ -768,56 +768,56 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
         
-        // Навигация по меню
+     
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Убираем активный класс у всех ссылок
+            
                 navLinks.forEach(l => l.classList.remove('active'));
                 
-                // Добавляем активный класс к текущей ссылке
+             
                 this.classList.add('active');
                 
-                // Скрываем все страницы
+               
                 pages.forEach(page => page.classList.remove('active-page'));
                 
-                // Показываем выбранную страницу
+              
                 const pageId = this.getAttribute('data-page');
                 document.getElementById(pageId).classList.add('active-page');
             });
         });
         
-        // Обработка кликов по товарам
+     
         const productCards = document.querySelectorAll('.product-card');
         
         productCards.forEach(card => {
             card.style.cursor = 'pointer'; // Меняем курсор на указатель
             
             card.addEventListener('click', function() {
-                // Убираем активный класс у всех ссылок в меню
+              
                 navLinks.forEach(l => l.classList.remove('active'));
                 
-                // Активируем ссылку "ТОВАР" в меню
+               
                 const productLink = document.querySelector('[data-page="product"]');
                 productLink.classList.add('active');
                 
-                // Скрываем все страницы
+               
                 pages.forEach(page => page.classList.remove('active-page'));
                 
-                // Показываем страницу товара
+              
                 document.getElementById('product').classList.add('active-page');
                 
-                // Здесь можно добавить логику для загрузки данных конкретного товара
+              
                 const productId = this.getAttribute('data-product');
                 console.log('Открыт товар с ID:', productId);
                 
-                // Можно обновить информацию на странице товара в зависимости от выбранного товара
+                
                 updateProductPage(productId);
             });
         });
         
-        // Функция для обновления информации на странице товара
+     
         function updateProductPage(productId) {
             const productTitles = {
                 1: "ПРЕМИУМ ТОВАР - Профессиональная серия",
@@ -831,19 +831,19 @@
                 3: "Эксклюзивный товар с ограниченным тиражом для ценителей качества"
             };
             
-            // Обновляем заголовок товара
+         
             const productTitle = document.querySelector('#product .product-title');
             if (productTitle && productTitles[productId]) {
                 productTitle.textContent = productTitles[productId];
             }
             
-            // Обновляем описание товара
+           
             const productDesc = document.querySelector('#product .product-details p');
             if (productDesc && productDescriptions[productId]) {
                 productDesc.textContent = productDescriptions[productId];
             }
             
-            // Можно добавить обновление изображения, цены и других характеристик
+          
             const productImage = document.querySelector('#product .product-image');
             if (productImage) {
                 productImage.textContent = `ТОВАР ${productId}`;
